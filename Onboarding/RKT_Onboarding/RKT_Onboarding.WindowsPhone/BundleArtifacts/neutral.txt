@@ -1,0 +1,3 @@
+MainPackage=C:\Dev\tfs\SMP_SDK_Samples\dev\E2EUniversalApp\E2EUniversalApp\E2EUniversalApp.WindowsPhone\bin\Release\E2EUniversalApp.WindowsPhone_1.0.0.0_Bundle\E2EUniversalApp.WindowsPhone_1.0.0.0_AnyCPU.appx
+SymbolPackage=C:\Dev\tfs\SMP_SDK_Samples\dev\E2EUniversalApp\E2EUniversalApp\E2EUniversalApp.WindowsPhone\AppPackages\E2EUniversalApp.WindowsPhone_1.0.0.0_Test\E2EUniversalApp.WindowsPhone_1.0.0.0_AnyCPU.appxsym
+ResourcePack=C:\Dev\tfs\SMP_SDK_Samples\dev\E2EUniversalApp\E2EUniversalApp\E2EUniversalApp.WindowsPhone\bin\Release\E2EUniversalApp.WindowsPhone_1.0.0.0_Bundle\E2EUniversalApp.WindowsPhone_1.0.0.0_scale-180.appx
