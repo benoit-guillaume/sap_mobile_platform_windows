@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>5fd54646-7da3-4002-8e39-53d72c046520</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>RKT_JSONService</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ObservableDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SuspensionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Contexts\Globals.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Contexts\JsonContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Contexts\LogonPageContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Contexts\ODataContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\Converters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FlightDetails.xaml.cs">
+      <DependentUpon>FlightDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Flights.xaml.cs">
+      <DependentUpon>Flights.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\RegistrationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LogonPage.xaml.cs">
+      <DependentUpon>LogonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Airlines.xaml.cs">
+      <DependentUpon>Airlines.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)FlightDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Flights.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)LogonPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Airlines.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\StripedBackground_PS_Landscape.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\AA.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\AB.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\AC.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\AC.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\AF.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\AZ.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\BA.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\CO.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\DL.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\FJ.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\JL.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\LH.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\NG.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\NW.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\QF.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\SA.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\SQ.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\SR.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\UA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en-US\Resources.resw" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,197 @@
+﻿<Page
+    x:Class="RKT_POSTFlightBooking.LogonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:RKT_POSTFlightBooking.Converters"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Page.Resources>
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibility" />
+        <converters:BoolToInverseConverter x:Key="BoolToInverse" />
+        <converters:BoolToInverseVisibilityConverter x:Key="BoolToInverseVisibility" />
+    </Page.Resources>
+
+    <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
+    <Grid>
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="/Assets/StripedBackground_PS_Landscape.png" Stretch="UniformToFill" />
+        </Grid.Background>-->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="LogonStates">
+                <VisualState x:Name="ShouldRegister">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RegisterForm" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ProgressPanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NewPasscodePanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="EnterPasscodePanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Registering">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RegisterForm" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ProgressPanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NewPasscodePanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="EnterPasscodePanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="NewPasscode">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RegisterForm" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ProgressPanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NewPasscodePanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="EnterPasscodePanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="EnterPasscode">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RegisterForm" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ProgressPanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NewPasscodePanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="EnterPasscodePanel" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Image Source="/Assets/StripedBackground_PS_Landscape.png" Stretch="UniformToFill" Grid.RowSpan="2"/>
+        <StackPanel Margin="0,0,0,-6">
+            <Rectangle Height="10" VerticalAlignment="Top" Grid.ColumnSpan="2" Fill="{StaticResource SAPYellow}" />
+            <TextBlock Text="SAP Logon" Margin="19,19,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" />
+        </StackPanel>
+        
+        <StackPanel Name="ProgressPanel" Margin="12" VerticalAlignment="Center" Visibility="Collapsed" MaxWidth="{StaticResource FormMaxWidth}" Grid.Row="1">
+            <ProgressBar IsIndeterminate="True"/>
+            <TextBlock Text="registering" HorizontalAlignment="Center"/>
+            <Button Content="cancel" Click="ButtonCancelRegistrationClick" HorizontalAlignment="Center" IsEnabled="True"/>
+        </StackPanel>
+
+        <ScrollViewer Name="RegisterForm" Margin="12" VerticalScrollBarVisibility="Auto" Visibility="Collapsed" MaxWidth="{StaticResource FormMaxWidth}" Grid.Row="1">
+            <StackPanel>
+                <StackPanel DataContext="{Binding LogonContext.RegistrationContext}">
+                    <StackPanel>
+                        <TextBlock Text="application id" />
+                        <TextBox Text="{Binding ApplicationId, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="host" />
+                        <TextBox Text="{Binding ServerHost, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="https" />
+                        <ToggleSwitch IsOn="{Binding IsHttps, Mode=TwoWay}" />
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="port" />
+                        <TextBox Text="{Binding ServerPort, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="suffix" />
+                        <TextBox Text="{Binding ResourcePath, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="user" />
+                        <TextBox Text="{Binding BackendUserName, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="password" />
+                        <PasswordBox Password="{Binding BackendPassword, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                    <StackPanel Visibility="Collapsed">
+                        <TextBlock Text="communicator id" />
+                        <TextBox Text="{Binding CommunicatorId, Mode=TwoWay}"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Content="register" HorizontalAlignment="Left" Click="ButtonRegisterClick" />
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <StackPanel Name="NewPasscodePanel" Margin="12" Visibility="Collapsed" MaxWidth="{StaticResource FormMaxWidth}" Grid.Row="1">
+            <StackPanel>
+                <StackPanel Margin="0,12" Visibility="{Binding PasswordToggleEnabled,Converter={StaticResource BoolToVisibility}}">
+                    <TextBlock Text="enable passcode" />
+                    <ToggleSwitch IsOn="True" Name="PasscodeSwitch" />
+                </StackPanel>
+                <StackPanel Visibility="{Binding ElementName=PasscodeSwitch,Path=IsOn,Converter={StaticResource BoolToVisibility}}">
+                    <StackPanel>
+                        <TextBlock Text="passcode" />
+                        <PasswordBox Password="{Binding Passcode, Mode=TwoWay}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="confirm passcode" />
+                        <PasswordBox Password="{Binding ConfirmedPasscode, Mode=TwoWay}"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button HorizontalAlignment="Left" Content="OK" Click="ButtonNewPasscodeOkClick"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Name="EnterPasscodePanel" Margin="12" Visibility="Collapsed" MaxWidth="{StaticResource FormMaxWidth}" Grid.Row="1">
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock Text="passcode" />
+                    <PasswordBox Password="{Binding UnlockCode, Mode=TwoWay}"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="OK" Margin="0,0,12,0" Click="ButtonUnlockClick" />
+                <Button Content="delete registration" Click="ButtonDeleteRegistrationClick"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+
+</Page>
