@@ -1,0 +1,98 @@
+﻿<Page x:Class="RKT_WPF_JSONService.Flights"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="{StaticResource FlightCollection}">
+
+    <Page.Resources>
+        <ImageBrush x:Key="bg_image" ImageSource="/Assets/StripedBackground_PS_Landscape.png" Stretch="UniformToFill"/>
+        <DataTemplate x:Key="ImageTextCollectionTemplate">
+            <StackPanel Orientation="Horizontal" Width="250" Height="130" Background="{StaticResource ItemDefaultBackground}" Margin="{StaticResource TemplateMargin}">
+                <StackPanel.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Show Airport Status" Click="BtnShowAirportStatusClick" Tag="{Binding}" />
+                    </ContextMenu>
+                </StackPanel.ContextMenu>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Margin="0,10,0,0">
+                    <TextBlock Margin="10,0,0,0" Width="200" Height="20" TextTrimming="WordEllipsis">
+                        <Run Text="{Binding Properties[carrid].Value}" />
+                        <Run Text="   " />
+                        <Run Text="{Binding Properties[connid].Value}" />
+                    </TextBlock>
+                    <TextBlock Margin="10,0,0,0" Width="200" Height="14" TextTrimming="WordEllipsis" FontWeight="Bold" FontSize="9">
+                        <Run Text="{Binding Properties[flightDetails/cityFrom].Value}" />
+                        <Run Text=" => " />
+                        <Run Text="{Binding Properties[flightDetails/cityTo].Value}" />
+                    </TextBlock>
+                    <TextBlock Text="{Binding Properties[fldate].Value}" 
+                       Margin="10,0,0,0" Width="200" Height="14" TextTrimming="WordEllipsis" FontWeight="Bold" FontSize="9"/>
+                    <TextBlock Margin="10,2,0,0" Width="200" TextTrimming="WordEllipsis" TextWrapping="Wrap">
+                        <Run Text="{Binding Properties[PRICE].Value}" />
+                        <Run Text=" " />
+                        <Run Text="{Binding Properties[CURRENCY].Value}" />
+                    </TextBlock>
+                    <!--<TextBlock Text="{Binding Properties[EndDate].Value}" 
+                       Margin="10,2,0,0" Width="350" TextTrimming="WordEllipsis" TextWrapping="Wrap"/>-->
+                </StackPanel>
+                
+            </StackPanel>
+        </DataTemplate>
+        
+    </Page.Resources>
+
+    <Grid Background="{StaticResource bg_image}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu IsMainMenu="True" Padding="0,2,0,2">
+            <MenuItem Header="_File">
+                <MenuItem Header="E_xit" Click="MenuItemExitClick"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Click="MenuItemAboutClick"/>
+            </MenuItem>
+        </Menu>
+        <!--<Frame Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>-->
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="0">
+                <Grid>
+                    <Rectangle Height="4" VerticalAlignment="Top" Grid.ColumnSpan="2" Fill="{StaticResource SAPYellow}" />
+                    <ProgressBar Height="4" IsIndeterminate="True" Foreground="{StaticResource SAPYellow}" Visibility="{Binding RingVisible}"/>
+                </Grid>
+                <TextBlock Grid.Row="1" Typography.Capitals="AllSmallCaps" Margin="8,4,0,4">
+                    <Run Text="{StaticResource FlightCollection}" />
+                    <Run Text="{Binding RelatedEntitySetCount}" />
+                </TextBlock>
+            </StackPanel>
+
+            <ListView Background="Transparent"
+                      x:Name="ItemGridView"
+                      AutomationProperties.AutomationId="ItemsGridView"
+                      AutomationProperties.Name="Items"
+                      TabIndex="1"
+                      Grid.Row="1"
+                      Visibility="Visible"
+                      ItemsSource="{Binding RelatedEntitySet}"
+                      ItemTemplate="{StaticResource ImageTextCollectionTemplate}"
+                      SelectionMode="Single"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+
+            </ListView>
+        </Grid>
+    </Grid>
+</Page>

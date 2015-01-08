@@ -1,0 +1,23 @@
+﻿<Application x:Class="RKT_WPF_POSTFlightBooking.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             StartupUri="LogonWindow.xaml">
+    <Application.Resources>
+        <system:String x:Key="AppName">Flight Sample Application</system:String>
+        <system:String x:Key="CarrierCollection">Carrier Collection</system:String>
+        <system:String x:Key="FlightCollection">Flight Collection</system:String>
+        <system:String x:Key="FlightDetails">Flight Details</system:String>
+        <system:Double x:Key="FormMaxWidth">600</system:Double>
+        <SolidColorBrush Color="#EEEEEE" x:Key="SAPDefaultBackgroundColor" />
+        <SolidColorBrush x:Key="SAPBlue">#007CC0</SolidColorBrush>
+        <SolidColorBrush Color="#F0AB00" x:Key="SAPYellow"/>
+
+        <Thickness x:Key="TemplateMargin">0</Thickness>
+        <Thickness x:Key="PageTitleMargin">39,19,0,20</Thickness>
+        <Thickness x:Key="PageSubtitleMargin">39,0,0,0</Thickness>
+        <Thickness x:Key="ListControlPadding">24,0,24,46</Thickness>
+        <SolidColorBrush Color="#EEEEEE" x:Key="ItemDefaultBackground" />
+        <SolidColorBrush Color="White" x:Key="ImagePlaceholderBackground" />
+    </Application.Resources>
+</Application>

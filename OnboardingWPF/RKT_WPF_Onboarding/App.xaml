@@ -1,0 +1,13 @@
+﻿<Application x:Class="RKT_WPF_Onboarding.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             StartupUri="LogonWindow.xaml">
+    <Application.Resources>
+        <system:String x:Key="AppName">Flight Sample Application</system:String>
+        <system:String x:Key="CarrierCollection">Carrier Collection</system:String>
+        <SolidColorBrush Color="#EEEEEE" x:Key="SAPDefaultBackgroundColor" />
+        <SolidColorBrush x:Key="SAPBlue">#007CC0</SolidColorBrush>
+        <SolidColorBrush Color="#F0AB00" x:Key="SAPYellow"/>
+    </Application.Resources>
+</Application>
