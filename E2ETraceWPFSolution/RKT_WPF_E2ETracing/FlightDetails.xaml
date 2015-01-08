@@ -1,0 +1,107 @@
+﻿<Page x:Class="RKT_WPF_E2ETracing.FlightDetails"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:converters="clr-namespace:RKT_WPF_E2ETracing.Converters"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="{StaticResource FlightDetails}">
+
+    <Page.Resources>
+        <ImageBrush x:Key="bg_image" ImageSource="/Assets/StripedBackground_PS_Landscape.png" Stretch="UniformToFill"/>
+        <converters:DateToVisibilityConverter x:Key="DateToVisibility" />
+    </Page.Resources>
+    
+    <Grid Background="{StaticResource bg_image}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu IsMainMenu="True" Padding="0,2,0,2">
+            <MenuItem Header="_File">
+                <MenuItem Header="E_xit" Click="MenuItemExitClick"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Click="MenuItemAboutClick"/>
+            </MenuItem>
+        </Menu>
+    <Grid x:Name="LayoutRoot" Grid.Row="1">
+        <!--Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"-->
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/StripedBackground_PS_Landscape.png" Stretch="UniformToFill" />
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="0">
+            <Grid>
+                <Rectangle Height="4" VerticalAlignment="Top" Grid.ColumnSpan="2" Fill="{StaticResource SAPYellow}" />
+            </Grid>
+            <TextBlock Grid.Row="1" Typography.Capitals="AllSmallCaps" Margin="8,4,0,4">
+                    <Run Text="Flight Booking" />
+            </TextBlock>
+        </StackPanel>
+
+        <ScrollViewer Name="RegisterForm" Margin="12" VerticalScrollBarVisibility="Auto" MaxWidth="{StaticResource FormMaxWidth}" Grid.Row="1">
+                <Border CornerRadius="0,0,2,2" BorderBrush="{StaticResource SAPYellow}" BorderThickness="2"  Margin="4" Padding="20">
+                    <StackPanel DataContext="{Binding}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="200" FontWeight="Bold" Text="Airline ID" />
+                    <TextBlock Text="{Binding AirlineID}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="200" FontWeight="Bold" Text="Flight Number" />
+                    <TextBlock Text="{Binding FlightNumber}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="200" FontWeight="Bold" Text="Flight Date" />
+                    <TextBlock Text="{Binding FlightDate}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="200" FontWeight="Bold" Text="Price" />
+                    <TextBlock>
+                            <Run Text="{Binding Price}" />
+                            <Run Text=" " />
+                            <Run Text="{Binding Currency}" />
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="200" FontWeight="Bold" Text="Aiport" />
+                    <TextBlock Text="{Binding DestinationAirport}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="200" FontWeight="Bold" Text="Weather" />
+                    <TextBlock Text="{Binding Weather}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="200" FontWeight="Bold" Text="Temperature" />
+                    <TextBlock Text="{Binding Temperature}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Width="200" FontWeight="Bold" Text="Wind Conditions" />
+                    <TextBlock Text="{Binding Wind}"/>
+                </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                    <Button Content="cancel" HorizontalAlignment="Left" Margin="20,20,20,0" Click="AppBarButtonGoBackClick"/>
+                            <Button Content="book" HorizontalAlignment="Left" Margin="20,20,20,0" Click="BookFlight" Visibility="{Binding FlightDate, Converter={StaticResource DateToVisibility}}"/>
+                </StackPanel>
+            </StackPanel>
+
+            </Border>
+        </ScrollViewer>
+
+    </Grid>
+        </Grid>
+</Page>

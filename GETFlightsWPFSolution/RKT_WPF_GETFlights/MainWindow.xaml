@@ -1,0 +1,6 @@
+﻿<NavigationWindow x:Class="RKT_WPF_GETFlights.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{StaticResource AppName}" WindowState="Maximized" WindowStartupLocation="CenterScreen" Source="Airlines.xaml" Closed="MainWindow_OnClosed">
+
+</NavigationWindow>
