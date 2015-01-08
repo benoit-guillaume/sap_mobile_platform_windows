@@ -1,0 +1,121 @@
+﻿<Page
+    x:Class="GPStoreApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GPStoreApp"
+    xmlns:converters="using:Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Light" SizeChanged="Page_SizeChanged">
+
+    <Page.Resources>
+        <converters:NullToVisibility x:Key="NullToVisibility" />
+        <DataTemplate x:Key="SimplePropertyTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}" Margin="0,0,6,0"/>
+                <TextBlock Text="{Binding Value}" TextWrapping="Wrap" Grid.Column="1" Foreground="Black"/>
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ComplexPropertyTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}" Margin="0,0,6,0"/>
+
+                <ListBox Grid.Column="1" BorderThickness="0" ItemsSource="{Binding Value}"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled" IsEnabled="False"
+                         ItemTemplate="{StaticResource SimplePropertyTemplate}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Grid>
+        </DataTemplate>
+
+        <local:TemplateSelector x:Key="TemplateSelector"
+                                SimplePropertyTemplate="{StaticResource SimplePropertyTemplate}"
+                                ComplexPropertyTemplate="{StaticResource ComplexPropertyTemplate}" />
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" MinWidth="150"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Popup IsOpen="True" Name="Popup_Settings">
+            <Grid Background="#44000000" Name="Grid_Settings">
+                <StackPanel VerticalAlignment="Center" Background="White">
+                    <TextBlock Text="service URL" Margin="12,6"/>
+                    <TextBox Margin="12,0,12,0" Text="{Binding ServiceUrl, Mode=TwoWay}"/>
+
+                    <TextBlock Text="user name" Margin="12,6"/>
+                    <TextBox Margin="12,0,12,0" Name="TB_User"/>
+
+                    <TextBlock Text="password" Margin="12,6"/>
+                    <PasswordBox Margin="12,0,12,0" Name="TB_Password"/>
+                    
+                    <Button Content="connect" Margin="12,6" HorizontalAlignment="Center"
+                            Click="Button_ConnectClick"/>
+                </StackPanel>
+            </Grid>
+        </Popup>
+
+        <StackPanel Grid.ColumnSpan="3" Margin="0,0,0,12">
+            <Rectangle Height="10" VerticalAlignment="Top" Grid.ColumnSpan="2" Fill="{StaticResource SAPYellow}" />
+            <TextBlock x:Name="pageTitle" Text="{StaticResource AppName}" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="{StaticResource PageTitleMargin}"/>
+            <TextBlock Grid.Row="1" Margin="{StaticResource PageSubtitleMargin}" Typography.Capitals="AllSmallCaps"
+                       Visibility="{Binding ElementName=LB_Collections, Path=SelectedItem, Converter={StaticResource NullToVisibility}}">
+                <Run Text="{Binding ElementName=LB_Collections, Path=SelectedItem}" />
+                <Run Text="{Binding EntitySetCount}" />
+            </TextBlock>
+        </StackPanel>
+
+        <ListBox BorderThickness="0" BorderBrush="Transparent" ItemsSource="{Binding EntitySetNames}" Grid.Row="1"
+                 Name="LB_Collections" SelectionChanged="LB_Collections_SelectionChanged"
+                 IsEnabled="{Binding CanEditItems}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" TextTrimming="CharacterEllipsis" Margin="32,0,6,0"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox ItemsSource="{Binding EntitySet}" Grid.Column="1" Grid.Row="1" BorderThickness="0" Name="LB_Entities">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding EditResourcePath}" Visibility="{Binding EditResourcePath,Converter={StaticResource NullToVisibility}}"/>
+                        <TextBlock Text="{Binding ResourcePath}" Visibility="{Binding ResourcePath,Converter={StaticResource NullToVisibility}}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox Grid.Column="2" Grid.Row="1" BorderThickness="0" ItemsSource="{Binding ElementName=LB_Entities, Path=SelectedItem.Properties}"
+                 ItemTemplateSelector="{StaticResource TemplateSelector}" IsEnabled="True">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        
+        <ProgressRing Width="100" Height="100" Grid.ColumnSpan="3" Grid.RowSpan="2" IsActive="True" Visibility="{Binding RingVisible}" Background="Transparent"/>
+    </Grid>
+</Page>
