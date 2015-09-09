@@ -1,0 +1,14 @@
+﻿<Application
+    x:Class="BatchRequest.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BatchRequest" RequestedTheme="Light"
+    xmlns:xaml="using:Windows.UI.Xaml">
+    <Application.Resources>
+        <x:String x:Key="AppName">OData Batch Request Sample</x:String>
+        <SolidColorBrush Color="#F0AB00" x:Key="SAPYellow"/>
+
+        <xaml:Thickness x:Key="PageMargin">39,19,0,20</xaml:Thickness>
+        <xaml:Thickness x:Key="BorderMargin">39,19,39,20</xaml:Thickness>
+    </Application.Resources>
+</Application>
