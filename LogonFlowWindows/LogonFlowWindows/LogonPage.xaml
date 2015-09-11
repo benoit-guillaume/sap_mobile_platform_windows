@@ -1,0 +1,33 @@
+﻿<Page xmlns:FlowEngine="using:SAP.Logon.FlowEngine" 
+    x:Class="LogonFlowWindows.LogonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LogonFlowWindows"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Light">
+
+    <Page.Resources>
+        <ImageBrush ImageSource="/Assets/StripedBackground_PS_Landscape.png" x:Key="BackgroundImage" />
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <FlowEngine:LogonUI ApplicationId="com.sap.windows.flight" Name="logonFlow"
+                            Background="{StaticResource BackgroundImage}">
+            <FlowEngine:LogonUI.Header>
+                <DataTemplate>
+                    <Viewbox StretchDirection="DownOnly" Margin="12">
+                        <StackPanel VerticalAlignment="Center">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="SAP Sample Application Using FlowEngine" HorizontalAlignment="Right"
+                                               Foreground="#666666" FontSize="24" Margin="0,24,0,12"/>
+                                <TextBlock Text="© 2014 SAP SE. All rights reserved." HorizontalAlignment="Right"
+                                               Foreground="#666666" FontSize="12" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Viewbox>
+                </DataTemplate>
+            </FlowEngine:LogonUI.Header>
+        </FlowEngine:LogonUI>
+    </Grid>
+</Page>
