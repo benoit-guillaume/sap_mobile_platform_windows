@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="UsageWindows.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UsageWindows"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" RequestedTheme="Light">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" Margin="30">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Deviceinfo" Click="DeviceInfoClick" Margin="0,0,10,0"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Start timer" Click="StartTimerClick" Margin="0,0,10,0"></Button>
+                    <Button Content="Stop timer" Click="StopTimerClick" Margin="0,0,10,0"></Button>
+                    <Button Content="Log" Click="LogClick" Margin="0,0,10,0"></Button>
+                </StackPanel>
+                <TextBlock Text="{Binding DeviceInformation}"  FontSize="20" Margin="0,20,0,0"></TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
